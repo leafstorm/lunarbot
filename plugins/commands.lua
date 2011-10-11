@@ -10,10 +10,12 @@ function commands:setup ()
 end
 
 
-function commands.callbacks:pluginadded (plugin)
-    if plugin.commands then
-        for name, f in pairs(plugin.commands) do
-            self.commands[name] = f
+function commands.callbacks:pluginsready (plugin)
+    for name, plugin in pairs(self._plugins) do
+        if plugin.commands then
+            for name, f in pairs(plugin.commands) do
+                self.commands[name] = f
+            end
         end
     end
 end

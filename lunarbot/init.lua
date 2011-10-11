@@ -68,6 +68,7 @@ function Lunarbot:__init (options)
         end
         self:addplugin(plugin)
     end
+    self:runcallbacks("pluginsready")
 end
 
 
@@ -109,7 +110,6 @@ function Lunarbot:addplugin (plugin)
             self:addcallback(event, callback)
         end
     end
-    self:runcallbacks("pluginadded", plugin)
 end
 
 

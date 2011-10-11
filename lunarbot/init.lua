@@ -160,6 +160,21 @@ function Lunarbot:onnotice (user, channel, message)
 end
 
 
+function Lunarbot:onjoin (user, channel)
+    self:runcallbacks("onjoin", user, channel)
+end
+
+
+function Lunarbot:onpart (user, channel)
+    self:runcallbacks("onpart", user, channel)
+end
+
+
+function Lunarbot:ontopic (channel, topic)
+    self:runcallbacks("ontopic", channel, topic)
+end
+
+
 function Lunarbot:_addhooks (irc)
     local function hook (hookname, method)
         irc:hook(hookname, method, function (...)
@@ -168,6 +183,9 @@ function Lunarbot:_addhooks (irc)
     end
     hook("OnChat", "onchat")
     hook("OnNotice", "onnotice")
+    hook("OnJoin", "onjoin")
+    hook("OnPart", "onpart")
+    hook("OnTopic", "ontopic")
 end
 
 

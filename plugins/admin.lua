@@ -9,7 +9,7 @@ function admin.commands:disconnect (sender, channel)
     if sender.nick == self.options.owner then
         self:disconnect "Goodbye, everyone."
     else
-        sender:reply(string.format("%s: Access denied.", sender.nick))
+        sender:reply("Access denied.")
     end
 end
 

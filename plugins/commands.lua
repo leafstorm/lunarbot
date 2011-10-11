@@ -25,18 +25,17 @@ function commands.callbacks:onchat (sender, message)
         if self.commands[command] then
             self.commands[command](self, sender, args)
         else
-            sender:reply(string.format("%s: Not a command.", sender.nick))
+            sender:reply("I don't recognize that command.")
         end
     end
 end
 
 
-function commands.commands:echo (sender, args)
-    printf("Received echo command from %s", sender.nick)
+function commands.commands:say (sender, args)
     if #args == 0 then
-        sender:reply("...")
+        sender:say("...")
     else
-        sender:reply(args)
+        sender:say(args)
     end
 end
 

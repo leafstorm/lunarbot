@@ -20,9 +20,18 @@ function Sender:__init (bot, channel, user)
 end
 
 
-function Sender:reply (mesg)
+function Sender:say (mesg)
     if self.channel:match("^[#&+!]") then
         self.bot:send(self.channel, mesg)
+    else
+        self.bot:send(self.nick, mesg)
+    end
+end
+
+
+function Sender:reply (mesg)
+    if self.channel:match("^[#&+!]") then
+        self.bot:send(self.channel, string.format("%s: %s", self.nick, mesg))
     else
         self.bot:send(self.nick, mesg)
     end

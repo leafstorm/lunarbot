@@ -20,7 +20,12 @@ end
 
 
 function commands.callbacks:onchat (sender, message)
-    local command, args = message:match("^" .. self.nick .. commandpattern)
+    local command, args
+    if ischannel(sender.channel) then
+        command, args = message:match("^" .. self.nick .. commandpattern)
+    else
+        command, args = message:match("(%a+)%s*(.*)")
+    end
     if command then
         if self.commands[command] then
             self.commands[command](self, sender, args)

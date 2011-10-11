@@ -30,7 +30,7 @@ end
 
 
 function Sender:reply (mesg)
-    if self.channel:match("^[#&+!]") then
+    if ischannel(self.channel) then
         self.bot:send(self.channel, string.format("%s: %s", self.nick, mesg))
     else
         self.bot:send(self.nick, mesg)
@@ -39,7 +39,7 @@ end
 
 
 function Sender:action (mesg)
-    if self.channel:match("^[#&+!]") then
+    if ischannel(self.channel) then
         self.bot:action(self.channel, mesg)
     else
         self.bot:action(self.nick, mesg)

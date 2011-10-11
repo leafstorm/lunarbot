@@ -23,6 +23,11 @@ function class ()
 end
 
 
+function ischannel (channel)
+    return channel:match("^[#&+!]")
+end
+
+
 Scheduler = class()
 
 function Scheduler:__init ()
